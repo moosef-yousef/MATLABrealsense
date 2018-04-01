@@ -1,4 +1,4 @@
-function color(app, x, y)
+function RGB_stream(app, x, y)
 %try
 calllib('realsense', 'rs_wait_for_frames', app.dev{app.selectdev}, rs_error);
 rs_check_error(app.err);
@@ -13,11 +13,13 @@ color_image = reshape(color_image, 3, app.width, app.height);
 color_image = permute(color_image, [2,3,1]);
 color_image = rot90(color_image,-1);
 
-app.calimage = color_image;
-imagesc(app.axcolor, color_image);
-rectangle(app.axcolor, 'Position', [106, 80, 427, 320], 'EdgeColor', 'r', 'LineWidth', 3);
-viscircles(app.axcolor, fliplr(app.colorcoords.colorcoords),  ones(24, 1) .* 10);
-axis(app.axcolor, 'image');
+app.calimage{app.selectdev} = color_image;
+imagesc(app.axcolor{app.selectdev}, color_image);
+RGB_title = app.TabCamSelected(app.selectdev).Title;
+title(['RGB stream ', RGB_title]);
+rectangle(app.axcolor{app.selectdev}, 'Position', [106, 80, 427, 320], 'EdgeColor', 'r', 'LineWidth', 3);
+viscircles(app.axcolor{app.selectdev}, fliplr(app.colorcoords.colorcoords),  ones(24, 1) .* 10);
+axis(app.axcolor{app.selectdev}, 'image');
 drawnow;
 
 if get(gcf,'CurrentCharacter') == 'c'
