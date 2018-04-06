@@ -3,6 +3,9 @@
 compatibility(tested): SR300
 platformt: MATLAB's appdesigner
 
+1. Connect the camera before running MATLAB; 
+2. run MATLAB as an adminstrator on Windows to use the app;
+
 There are two implementations in MATLAB for sr300 cameras. V_2 doesn't work yet.
 The two folders:
   1. App_SR300_Beta1 - this is the working version;
