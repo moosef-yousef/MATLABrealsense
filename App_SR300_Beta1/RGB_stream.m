@@ -23,7 +23,7 @@ function RGB_stream(app, x, y)
         axis(app.axcolor{app.selectdev}, 'image');
         drawnow;
 
-        if get(gcf,'CurrentCharacter') == 'c'
+        if get(get(groot,'CurrentFigure'),'CurrentCharacter') == 'c'
             imwrite(color_image, strcat('color', num2str(app.countcolor), '.png'));
             set(gcf,'currentch','n');
             app.countcolor = app.countcolor + 1;
