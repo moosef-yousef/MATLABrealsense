@@ -1,4 +1,6 @@
 function delete_DEPTH_fig(app, event)
-    stop(app.timerdepth);
+    if ~strcmp(app.timerdepth.Running,'off')
+       stop(app.timerdepth);
+    end
     delete(app.figdepth);
 end

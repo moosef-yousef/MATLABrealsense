@@ -1,4 +1,9 @@
 function delete_PCL_fig(app, event)
-    stop(app.timerpcl);
-    delete(app.figpcl);
+    if isvalid(app)
+        if ~strcmp(app.timerpcl.Running,'off')
+            stop(app.timerpcl);
+        end
+
+        delete(app.figpcl)
+    end
 end

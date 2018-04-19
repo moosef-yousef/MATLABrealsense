@@ -1,5 +1,5 @@
 function allcam(app, x, y)
-%try
+
     if isvalid(app.figall)
         for i = 1:app.deviceCount
             %wait for frames
@@ -27,6 +27,7 @@ function allcam(app, x, y)
             depth_image = double(depth_image);
             depth_image = rot90(depth_image,-1);
             image(app.axall{i + app.deviceCount}, depth_image/2^15*255);
+            %colormap hot;
             colormap gray;
             axis(app.axall{i + app.deviceCount},'image');
             drawnow;

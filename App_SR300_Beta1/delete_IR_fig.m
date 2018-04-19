@@ -1,4 +1,6 @@
 function delete_IR_fig(app, event)
-    stop(app.timerIR);
+    if ~strcmp(app.timerIR.Running,'off')
+        stop(app.timerIR);
+    end
     delete(app.figIR);
 end

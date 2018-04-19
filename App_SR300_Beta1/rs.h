@@ -297,6 +297,7 @@ typedef struct rs_intrinsics
     float         coeffs[5]; /**< distortion coefficients */
 } rs_intrinsics;
 
+
 /* represents motion device intrinsic - scale, bias and variances */
 typedef struct rs_motion_device_intrinsic
 {
@@ -935,6 +936,11 @@ const char * rs_camera_info_to_string(rs_camera_info info);
 const char * rs_camera_info_to_string(rs_camera_info info);
 const char * rs_timestamp_domain_to_string(rs_timestamp_domain info);
 const char * rs_frame_metadata_to_string(rs_frame_metadata md);
+
+//void set_rs_intrinsics_distortion(rs_intrinsics *new_strinsics, rs_distortion newDistortion) {
+//	(*new_strinsics).model = newDistortion;
+//}
+
 
 /**
 * start logging to console
