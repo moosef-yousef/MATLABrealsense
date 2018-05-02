@@ -1,4 +1,4 @@
-%output is the file names in img_folder with the specified extension
+%output is the file names in img_folder with the specified extension 
 % it's a volumn vector of strings & a column of char vectors
 % char vectors will have whitespace to fill up the
 % difference in space between each file name, after the extension
@@ -6,8 +6,10 @@ function file_names2_char = save_file_names_in_folder(img_folder,extension)
     %gets file names with the selected extension
     current_folder = pwd;
     %current_folder = current_folder.folder; %saving so the program can return to the original  folder
+    if ~strcmp(pwd, img_folder)
+        cd(img_folder); 
+    end
     
-    cd(img_folder); 
     extension = char(strcat('*.',extension));
     file_names = struct2cell(dir(extension));
     

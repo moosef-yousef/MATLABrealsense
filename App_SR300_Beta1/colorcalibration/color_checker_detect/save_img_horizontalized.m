@@ -1,18 +1,15 @@
 function bikes = save_img_horizontalized(img_folder)
-    imgs_struct = dir(img_folder);
-    img_names = [imgs_struct.name];
-    img_cell = split(img_names,'.jpg');
-    img_cell = img_cell(1:(end-1));
-    img_cell(1) = { erase(img_cell(1),'.') };
+    
+    img_names = save_file_names_in_folder(img_folder,'png')
+        
         %img_names = char.empty
 %    while contains(img_cell(i),'.')
 %         fileName = char( erase(fileName ,'.') );
 %     end
     
     bikes = []
-    for i=1:length(img_cell)            
-        fileName =char.empty;
-        fileName = char(strcat( img_cell{i},'.jpg'));
+    for i=1:size(img_names,1)
+        fileName = img_names(i,:);
         img_dummy = imread(fileName);
         img_dummy_gray = resize_and_grayscale(img_dummy,[240 320]);
         imshow(img_dummy_gray);
@@ -46,13 +43,4 @@ function img_dummy_gray  = resize_and_grayscale(img,dimensions)
         img = imresize(img,dimensions);
         img_dummy_gray = rgb2gray(img);
     end
-end
-
-
-function img_row_form  = horizontalize(image)
-    dimensions = size(image);    
-    no_of_columns_horiz_dimension = dimensions(1) *  dimensions(2);
-     %1 row x N pixels (columns)
-    dimensions = [1 no_of_columns_horiz_dimension];
-    img_row_form = reshape(image, dimensions);
 end
