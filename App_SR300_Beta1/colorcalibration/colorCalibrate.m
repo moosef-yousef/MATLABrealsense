@@ -151,7 +151,7 @@ clc
     height = size(checkerboard_img_cam, 1);
     width = size(checkerboard_img_cam, 2);
     %imagecorrected = uint8(reshape(imagecorrected(:), height, width, 3));
-    imagecorrected2 = uint8(reshape(imagecorrected2(:), height, width, 3));
+    imagecorrected2 = uint8(reshape(imagecorrected2, height, width, 3));
 
     if norm 
         IMG_FOR_CORRECTION_FILENAME2 = strcat(IMG_FOR_CORRECTION_FILENAME, 'newCheck_NORM');
