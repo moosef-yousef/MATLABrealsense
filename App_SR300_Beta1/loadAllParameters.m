@@ -44,6 +44,10 @@ function loadAllParameters(app)
                 optPrt, currentSelectOptions{i,4}, rs_error);
                 rs_check_error(app.err);
         end
+        
+        update_ivcamPresetLabels(app);
+        
+        
         %GetOptions(app);
         
         %applies ivcam parameters
