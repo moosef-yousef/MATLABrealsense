@@ -45,7 +45,7 @@ function loadAllParameters(app)
                 rs_check_error(app.err);
         end
         
-        app.ivcampresetDropDown(1).Value = currentSelectOptions(1,5);
+        
         update_ivcamPresetLabels(app);
         
         
