@@ -1,5 +1,5 @@
-function [initCheckerFile, initCheckerPath, picToCalibrateFile, picToCalibratePath, normal] = colorCalibrateUI(app)
-
+function [initCheckerFile, initCheckerPath, picToCalibrateFile, picToCalibratePath, normal, valid] = colorCalibrateUI(app)
+valid = 1;
 initCheckerFile = 0;
 initCheckerPath = 0;
 picToCalibrateFile = 0;
@@ -9,10 +9,12 @@ normal = -1;
 
 if isequal(initCheckerFile,0)
     errordlg('No file Selected');
+    valid = 0;
 else
     [picToCalibrateFile, picToCalibratePath] = uigetfile('*.*', 'Select the Picture To Calibrate');
     if isequal(picToCalibrateFile,0)
         errordlg('No file Selected');
+        valid = 0;
     else
 
         msg = 'Do you want to normalize the regression?';
@@ -26,6 +28,9 @@ else
                 normal = 0;
         else
             normal = -1;
+            valid = 0;
+         
         end
+       
     end
 end
