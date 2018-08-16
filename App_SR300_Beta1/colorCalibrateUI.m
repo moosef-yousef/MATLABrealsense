@@ -1,6 +1,11 @@
 function [initCheckerFile, initCheckerPath, picToCalibrateFile, picToCalibratePath, normal] = colorCalibrateUI(app)
 
-[initCheckerFile, initCheckerPath] = uigetfile('*.*', 'Select a Reference Color Checker');
+initCheckerFile = 0;
+initCheckerPath = 0;
+picToCalibrateFile = 0;
+picToCalibratePath = 0;
+normal = -1;
+[initCheckerFile, initCheckerPath] = uigetfile('*.*', 'Select a Reference Color Checker Image');
 
 if isequal(initCheckerFile,0)
     errordlg('No file Selected');
@@ -17,8 +22,10 @@ else
 
         if selection == 'Yes'
                 normal = 1;
-        else
+        elseif selection == 'No'
                 normal = 0;
+        else
+            normal = -1;
         end
     end
 end
