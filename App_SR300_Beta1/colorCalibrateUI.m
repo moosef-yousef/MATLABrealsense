@@ -22,9 +22,9 @@ else
         selection = uiconfirm(app.UIFigure, msg, title, 'Options', {'Yes', 'No', 'Cancel'},...
                     'DefaultOption',1,'CancelOption',3);
 
-        if selection == 'Yes'
+        if strcmp(selection,'Yes')
                 normal = 1;
-        elseif selection == 'No'
+        elseif strcmp(selection,'No')
                 normal = 0;
         else
             normal = -1;
